@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:latest # Use the latest PostgreSQL version
+    container_name: postgres-dev
+    environment:
+      POSTGRES_USER: dev_team
+      POSTGRES_PASSWORD: dev123
+      POSTGRES_DB: epsilon_db
+    ports:
+      - "5432:5432" # Map PostgreSQL to localhost for easy access
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist data locally
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dev_team"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
