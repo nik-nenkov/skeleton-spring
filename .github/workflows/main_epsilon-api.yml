@@ -62,6 +62,4 @@ jobs:
         with:
           app-name: 'epsilon-api'
           slot-name: 'Production'
-          package: '*.jar'
-          startup-command: 'java -Dspring.profiles.active=prod -jar /home/site/wwwroot/*.jar'
-          
+          package: '*.jar'          
